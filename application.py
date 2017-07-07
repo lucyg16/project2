@@ -1,8 +1,10 @@
+import os
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
+
 
 from helpers import *
 
@@ -228,7 +230,7 @@ def register():
         elif request.form.get("password") != request.form.get("password2"):
             return apology("password doesn't match")
     
-        Hash=pwd_context.encrypt(request.form.get("password"))
+        Hash=pwd_context.hash(request.form.get("password"))
     
         # insert the new user into users, storing the hash of the user's password
         result = db.execute("INSERT INTO users (first_name, last_name, email, username, hash) \
@@ -325,5 +327,7 @@ def deposit():
     #return to index
     return redirect(url_for("index"))
   
-        
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
     
