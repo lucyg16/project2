@@ -2,5 +2,6 @@ cs50
 Flask
 Flask-Session
 passlib
+psychopg2
 SQLAlchemy
 
