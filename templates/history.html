@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class ="table table-striped">
+        <tr>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Transactions</th>
+        </tr>
+        {% for history in histories %}
+        <tr>
+            <td>{{ symbol }}</td>
+            <td>{{ shares }}</td>
+            <td>{{ price }}</td>
+            <td>{{ transactions }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
